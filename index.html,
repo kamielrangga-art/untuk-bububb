@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffe4ef" />
+  <title>Untuk BUBUBB 💗</title>
+  <style>
+    :root {
+      --pink: #ff6fae;
+      --pink-dark: #d94b8b;
+      --pink-light: #fff0f6;
+      --ink: #6d3450;
+      --paper: #fffafc;
+      --line: #ffd0e2;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", system-ui, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top left, #fff 0, #fff0f6 45%, #ffe1ed 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { width: min(900px, 92%); margin: 0 auto; padding: 28px 0 60px; position: relative; z-index: 1; }
+    .hero { text-align: center; padding: 34px 14px 24px; }
+    .eyebrow { display: inline-block; border: 1px solid var(--line); background: #ffffffb8; border-radius: 99px; padding: 8px 14px; font-size: .82rem; letter-spacing: .08em; }
+    h1 { font-family: Georgia, serif; color: var(--pink-dark); font-size: clamp(2.4rem, 8vw, 4.8rem); line-height: 1.03; margin: 18px 0 12px; }
+    .hero p { max-width: 540px; margin: 0 auto; line-height: 1.7; font-size: 1.04rem; }
+    .tiny-heart { color: var(--pink); font-size: 1.2em; }
+    .card { background: #fffafce8; border: 1px solid #ffffff; box-shadow: 0 14px 38px #d94b8b18; border-radius: 24px; padding: clamp(20px, 5vw, 34px); margin: 22px 0; backdrop-filter: blur(8px); }
+    .section-title { font: 700 clamp(1.5rem, 5vw, 2rem) Georgia, serif; color: var(--pink-dark); margin: 0 0 10px; }
+    .muted { opacity: .82; line-height: 1.7; }
+    .envelope-area { text-align: center; padding: 12px 0 4px; }
+    .envelope { position: relative; width: min(250px, 80%); height: 160px; margin: 26px auto 20px; background: #ffb5d1; border-radius: 12px; box-shadow: 0 12px 25px #d94b8b22; display: grid; place-items: center; border: 2px solid #ff9bc4; }
+    .envelope::before { content: ""; position: absolute; inset: 0; background: #ffcee0; clip-path: polygon(0 0, 50% 58%, 100% 0); border-radius: 10px 10px 0 0; }
+    .envelope::after { content: ""; position: absolute; inset: 0; background: #ffc1d8; clip-path: polygon(0 100%, 50% 48%, 100% 100%); border-radius: 0 0 10px 10px; }
+    .seal { position: relative; z-index: 1; font-size: 2rem; filter: drop-shadow(0 2px 2px #d94b8b33); }
+    .btn { border: 0; border-radius: 999px; padding: 12px 20px; background: var(--pink); color: white; font-weight: 700; box-shadow: 0 7px 16px #ff6fae35; transition: transform .18s, background .18s; }
+    .btn:hover { transform: translateY(-2px); background: var(--pink-dark); }
+    .btn.secondary { background: #fff; color: var(--pink-dark); border: 1px solid var(--line); box-shadow: none; }
+    .letter { display: none; text-align: left; background: var(--paper); border: 1px dashed #f4a9c8; border-radius: 18px; padding: 22px; line-height: 1.9; margin-top: 22px; white-space: pre-line; animation: rise .45s ease both; }
+    .letter.show { display: block; }
+    .signature { font: italic 1.2rem Georgia, serif; color: var(--pink-dark); text-align: right; margin-top: 18px; }
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+    .photo-slot { min-height: 150px; border: 2px dashed #f3a6c7; border-radius: 17px; background: linear-gradient(145deg, #fff, #ffe7f0); display: grid; place-items: center; overflow: hidden; position: relative; text-align: center; padding: 10px; }
+    .photo-slot img { position: absolute; width: 100%; height: 100%; object-fit: cover; inset: 0; }
+    .photo-slot span { font-size: .9rem; line-height: 1.5; }
+    .photo-slot input { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+    .photo-note { font-size: .82rem; opacity: .72; }
+    .quiz-question { background: #fff0f6; padding: 16px; border-radius: 16px; margin: 14px 0; }
+    .quiz-question p { margin: 0 0 12px; font-weight: 700; }
+    .answers { display: grid; gap: 8px; }
+    .answer { text-align: left; background: white; border: 1px solid var(--line); border-radius: 12px; padding: 11px 13px; color: var(--ink); }
+    .answer.selected { border-color: var(--pink-dark); background: #ffe0ed; }
+    #quiz-result { min-height: 30px; font-weight: 700; color: var(--pink-dark); margin-top: 15px; }
+    footer { text-align: center; padding: 26px 10px 0; font-size: .9rem; opacity: .8; }
+    .floating-heart { position: fixed; bottom: -30px; color: #ff6fae; pointer-events: none; z-index: 0; animation: floatUp linear forwards; opacity: .72; }
+    @keyframes floatUp { to { transform: translateY(-115vh) rotate(25deg); opacity: 0; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 560px) { .photo-grid { grid-template-columns: 1fr; } .photo-slot { min-height: 210px; } .card { border-radius: 20px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <span class="eyebrow">A LITTLE SURPRISE FOR YOU ✧</span>
+      <h1>Happy Birthday,<br><span>BUBUBB</span> <span class="tiny-heart">♥</span></h1>
+      <p>Hari ini spesial, karena hari ini seseorang yang spesial juga lahir. Semoga halaman kecil ini bisa bikin kamu senyum, yaa. 💗</p>
+    </header>
+
+    <section class="card envelope-area" aria-labelledby="letter-title">
+      <h2 class="section-title" id="letter-title">Ada surat buat kamu… 💌</h2>
+      <p class="muted">Pencet amplopnya, eh maksudnya tombol di bawah ini hehe.</p>
+      <div class="envelope" aria-hidden="true"><span class="seal">💗</span></div>
+      <button class="btn" id="open-letter" type="button">Buka suratnya</button>
+      <article class="letter" id="letter">
+        Happy birthday, BUBUBB cintakuuu! 🎂💗
+
+        Selamat bertambah usia, yaa. Aku berharap di umur baru ini kamu makin bahagia, sehat, dikelilingi orang-orang baik, dan semua hal baik yang kamu semogakan pelan-pelan datang ke hidup kamu.
+
+        Makasih yaa udah hadir dan jadi bagian manis di hari-hariku. Mungkin aku nggak selalu bisa bikin semuanya sempurna, tapi aku pengin terus belajar jadi orang yang bisa dengerin kamu, menghargai kamu, dan bikin kamu merasa nyaman jadi diri sendiri.
+
+        Kalau suatu hari kamu capek, semoga kamu ingat kalau kamu berharga dan pantas dapet banyak hal baik. Jangan lupa istirahat, makan yang cukup, dan tetap jadi BUBUBB yang punya senyum manis itu, yaa. Jangan ngerasa harus selalu kuat sendirian.
+
+        Sekali lagi, happy birthday, BUBUBB! Semoga hari ini penuh tawa, kejutan kecil, dan kebahagiaan yang kamu inget lama. Aku doain yang terbaik buat kamu, hari ini dan seterusnya. 🫶
+        <div class="signature">Dari seseorang yang sayang kamu ♡</div>
+      </article>
+    </section>
+
+    <section class="card" aria-labelledby="photos-title">
+      <h2 class="section-title" id="photos-title">Little gallery of us 📸</h2>
+      <p class="muted">Masukin foto favorit kalian di kotak-kotak ini. Pilih foto dari galeri HP kamu, ya.</p>
+      <div class="photo-grid">
+        <label class="photo-slot"><span>＋<br>Foto pertama</span><input type="file" accept="image/*" aria-label="Pilih foto pertama" /></label>
+        <label class="photo-slot"><span>＋<br>Foto kedua</span><input type="file" accept="image/*" aria-label="Pilih foto kedua" /></label>
+        <label class="photo-slot"><span>＋<br>Foto ketiga</span><input type="file" accept="image/*" aria-label="Pilih foto ketiga" /></label>
+      </div>
+      <p class="photo-note">Catatan: foto yang dipilih tampil di perangkat kamu saja. Untuk foto muncul bagi dia juga, fotonya perlu ditambahkan ke file website sebelum dipublikasikan.</p>
+    </section>
+
+    <section class="card" aria-labelledby="quiz-title">
+      <h2 class="section-title" id="quiz-title">Mini quiz buat BUBUBB 🎀</h2>
+      <p class="muted">Coba jawab pertanyaan kecil ini. Pilih yang paling cocok, yaa!</p>
+      <div class="quiz-question" data-question="0">
+        <p>1. Hari ini kita lagi ngerayain apa?</p>
+        <div class="answers"><button class="answer" data-value="a">Hari biasa aja</button><button class="answer" data-value="b">Ulang tahun BUBUBB! 🎂</button><button class="answer" data-value="c">Hari libur nasional</button></div>
+      </div>
+      <div class="quiz-question" data-question="1">
+        <p>2. Apa yang aku harapin buat kamu?</p>
+        <div class="answers"><button class="answer" data-value="a">Kamu selalu bahagia dan sehat 💗</button><button class="answer" data-value="b">Kamu nggak boleh istirahat</button><button class="answer" data-value="c">Kamu harus selalu sempurna</button></div>
+      </div>
+      <div class="quiz-question" data-question="2">
+        <p>3. Habis baca ini, kamu harus…</p>
+        <div class="answers"><button class="answer" data-value="a">Cemberut terus</button><button class="answer" data-value="b">Lupa minum air</button><button class="answer" data-value="c">Senyum dulu buat aku hehe 🥹</button></div>
+      </div>
+      <button class="btn" id="check-quiz" type="button">Lihat hasilnya ✨</button>
+      <div id="quiz-result" role="status" aria-live="polite"></div>
+    </section>
+    <footer>Dibuat dengan banyak cinta untuk BUBUBB <span class="tiny-heart">♥</span><br><span class="photo-note">Psst… kamu spesial, jangan lupa itu.</span></footer>
+  </main>
+
+  <script>
+    const openButton = document.getElementById('open-letter');
+    const letter = document.getElementById('letter');
+    openButton.addEventListener('click', () => {
+      const isOpen = letter.classList.toggle('show');
+      openButton.textContent = isOpen ? 'Tutup suratnya 💌' : 'Buka suratnya';
+      if (isOpen) letter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Preview foto yang dipilih dari perangkat saat ini.
+    document.querySelectorAll('.photo-slot input').forEach((input) => {
+      input.addEventListener('change', (event) => {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        const slot = input.closest('.photo-slot');
+        let img = slot.querySelector('img');
+        if (!img) {
+          img = document.createElement('img');
+          img.alt = 'Foto pilihan';
+          slot.appendChild(img);
+        }
+        img.src = URL.createObjectURL(file);
+        slot.querySelector('span').style.display = 'none';
+      });
+    });
+
+    // Mini quiz: pilihan disimpan di halaman sampai hasil diperiksa.
+    const correct = ['b', 'a', 'c'];
+    const choices = {};
+    document.querySelectorAll('.quiz-question').forEach((question) => {
+      question.querySelectorAll('.answer').forEach((button) => {
+        button.addEventListener('click', () => {
+          const q = question.dataset.question;
+          choices[q] = button.dataset.value;
+          question.querySelectorAll('.answer').forEach((other) => other.classList.remove('selected'));
+          button.classList.add('selected');
+        });
+      });
+    });
+    document.getElementById('check-quiz').addEventListener('click', () => {
+      const total = correct.filter((answer, index) => choices[index] === answer).length;
+      const result = document.getElementById('quiz-result');
+      if (Object.keys(choices).length < correct.length) {
+        result.textContent = 'Jawab semua pertanyaannya dulu, BUBUBB yaa 💗';
+      } else if (total === 3) {
+        result.textContent = '3/3! Pinter bangettt, BUBUBB! Hadiah utamanya: peluk virtual dan banyak doa baik buat kamu 🫶';
+      } else {
+        result.textContent = `${total}/3 jawaban benar! Makasih udah main, BUBUBB. Yang paling penting, semoga kamu bahagia hari ini dan seterusnya 💗`;
+      }
+    });
+
+    // Hati-hati kecil yang melayang di latar.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reducedMotion) {
+      function createHeart() {
+        const heart = document.createElement('span');
+        heart.className = 'floating-heart';
+        heart.textContent = ['♥', '♡', '💗'][Math.floor(Math.random() * 3)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+        heart.style.animationDuration = (7 + Math.random() * 6) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 14000);
+      }
+      setInterval(createHeart, 850);
+    }
+  </script>
+</body>
+</html>
